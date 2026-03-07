@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://de4ovbjabh4tb"]
+
+[ext_resource type="Script" uid="uid://daf7uga82u4rf" path="res://test_scene/test_scene.gd" id="1_btala"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1973232321]
+script = ExtResource("1_btala")
+
+[node name="ControlContainer" type="Control" parent="." unique_id=558768129]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="ControlContainer" unique_id=26854596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.110803016, 0.40215895, 0.5814566, 1)
+metadata/_edit_lock_ = true
+
+[node name="TransitionControls" type="GridContainer" parent="ControlContainer" unique_id=1666152512]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -446.5
+offset_top = 32.0
+offset_right = 302.5
+offset_bottom = 98.0
+grow_horizontal = 2
+columns = 6
+
+[node name="FadeIn" type="Button" parent="ControlContainer/TransitionControls" unique_id=1876733153]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade In"
+
+[node name="FadeOut" type="Button" parent="ControlContainer/TransitionControls" unique_id=1950085475]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade Out"
+
+[node name="PopIn" type="Button" parent="ControlContainer/TransitionControls" unique_id=868605756]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Pop In"
+
+[node name="PopOut" type="Button" parent="ControlContainer/TransitionControls" unique_id=202201116]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Pop Out"
+
+[node name="FadeFromLeft" type="Button" parent="ControlContainer/TransitionControls" unique_id=1434089334]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Left"
+
+[node name="FadeFromRight" type="Button" parent="ControlContainer/TransitionControls" unique_id=700506167]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Right"
+
+[node name="FadeFromUp" type="Button" parent="ControlContainer/TransitionControls" unique_id=1190478310]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Up"
+
+[node name="FadeFromDown" type="Button" parent="ControlContainer/TransitionControls" unique_id=117352079]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Down"
+
+[node name="FadeToLeft" type="Button" parent="ControlContainer/TransitionControls" unique_id=181640008]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Left"
+
+[node name="FadeToRight" type="Button" parent="ControlContainer/TransitionControls" unique_id=972606103]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Right"
+
+[node name="FadeToUp" type="Button" parent="ControlContainer/TransitionControls" unique_id=2113881942]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Up"
+
+[node name="FadeToDown" type="Button" parent="ControlContainer/TransitionControls" unique_id=1151978201]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Down"
+
+[node name="AnimationControls" type="GridContainer" parent="ControlContainer" unique_id=1796824510]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80598956
+anchor_top = 0.049382716
+anchor_right = 1.0273438
+anchor_bottom = 0.097222224
+offset_left = -24.5
+offset_right = -119.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+
+[node name="Pulse" type="Button" parent="ControlContainer/AnimationControls" unique_id=48092293]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Pulse"
+
+[node name="Ping" type="Button" parent="ControlContainer/AnimationControls" unique_id=1242993503]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Ping"
+
+[node name="Wiggle" type="Button" parent="ControlContainer/AnimationControls" unique_id=427044722]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Wiggle"
+
+[node name="Panel" type="Panel" parent="ControlContainer" unique_id=1234254711]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -174.0
+offset_right = 174.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ControlContainer/Panel" unique_id=1202269226]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -103.0
+offset_top = 40.0
+offset_right = 103.0
+offset_bottom = 85.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Panel"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeIn" to="." method="_on_fade_in_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeOut" to="." method="_on_fade_out_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/PopIn" to="." method="_on_pop_in_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/PopOut" to="." method="_on_pop_out_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeFromLeft" to="." method="_on_fade_from_left_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeFromRight" to="." method="_on_fade_from_right_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeFromUp" to="." method="_on_fade_from_up_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeFromDown" to="." method="_on_fade_from_down_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeToLeft" to="." method="_on_fade_to_left_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeToRight" to="." method="_on_fade_to_right_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeToUp" to="." method="_on_fade_to_up_pressed"]
+[connection signal="pressed" from="ControlContainer/TransitionControls/FadeToDown" to="." method="_on_fade_to_down_pressed"]
+[connection signal="pressed" from="ControlContainer/AnimationControls/Pulse" to="." method="_on_pulse_pressed"]
+[connection signal="pressed" from="ControlContainer/AnimationControls/Ping" to="." method="_on_ping_pressed"]
+[connection signal="pressed" from="ControlContainer/AnimationControls/Wiggle" to="." method="_on_wiggle_pressed"]
