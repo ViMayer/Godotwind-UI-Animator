@@ -13,11 +13,18 @@ config_version=5
 config/name="Godotwind UI Animator"
 run/main_scene="uid://de4ovbjabh4tb"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://godotwind_logo.svg"
 
 [autoload]
 
-Animate="*res://addons/godotwind_ui_animator/godotwind.gd"
+Animate="*uid://c0kloq6fhlrql"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 

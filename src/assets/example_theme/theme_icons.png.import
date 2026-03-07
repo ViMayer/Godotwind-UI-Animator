@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6pnsdcjosgtu"
-path="res://.godot/imported/godotwind_icon.svg-207ba0b0b27b829a65fbd9bda1cee478.ctex"
+uid="uid://dxdagnoa4seta"
+path="res://.godot/imported/theme_icons.png-7b92ef3916cd3fe64913e2d3b7325885.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/godotwind_ui_animator/godotwind_icon.svg"
-dest_files=["res://.godot/imported/godotwind_icon.svg-207ba0b0b27b829a65fbd9bda1cee478.ctex"]
+source_file="res://src/assets/example_theme/theme_icons.png"
+dest_files=["res://.godot/imported/theme_icons.png-7b92ef3916cd3fe64913e2d3b7325885.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

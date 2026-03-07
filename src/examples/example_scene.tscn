@@ -1,9 +1,25 @@
 [gd_scene format=3 uid="uid://de4ovbjabh4tb"]
 
-[ext_resource type="Script" uid="uid://daf7uga82u4rf" path="res://test_scene/test_scene.gd" id="1_btala"]
+[ext_resource type="Script" uid="uid://bhk3ybvie74av" path="res://src/examples/example_scene.gd" id="1_qleqb"]
+[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://src/assets/example_theme/example_theme(kenneyUI-blue).tres" id="2_mjtio"]
+
+[sub_resource type="Environment" id="Environment_t8pvf"]
+background_mode = 3
+background_canvas_max_layer = 100
+tonemap_white = 4.27
+glow_enabled = true
+glow_levels/1 = 0.3
+glow_levels/2 = 0.6
+glow_strength = 2.0
+glow_bloom = 0.05
+adjustment_enabled = true
+adjustment_saturation = 1.1
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1973232321]
-script = ExtResource("1_btala")
+script = ExtResource("1_qleqb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1069053153]
+environment = SubResource("Environment_t8pvf")
 
 [node name="ControlContainer" type="Control" parent="." unique_id=558768129]
 layout_mode = 3
@@ -12,146 +28,192 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_mjtio")
 
-[node name="Background" type="ColorRect" parent="ControlContainer" unique_id=26854596]
+[node name="Background2" type="ColorRect" parent="ControlContainer" unique_id=1487740485]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.110803016, 0.40215895, 0.5814566, 1)
+color = Color(0.007911925, 0.50063527, 0.6465324, 1)
 metadata/_edit_lock_ = true
 
-[node name="TransitionControls" type="GridContainer" parent="ControlContainer" unique_id=1666152512]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -446.5
-offset_top = 32.0
-offset_right = 302.5
-offset_bottom = 98.0
-grow_horizontal = 2
-columns = 6
-
-[node name="FadeIn" type="Button" parent="ControlContainer/TransitionControls" unique_id=1876733153]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade In"
-
-[node name="FadeOut" type="Button" parent="ControlContainer/TransitionControls" unique_id=1950085475]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade Out"
-
-[node name="PopIn" type="Button" parent="ControlContainer/TransitionControls" unique_id=868605756]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Pop In"
-
-[node name="PopOut" type="Button" parent="ControlContainer/TransitionControls" unique_id=202201116]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Pop Out"
-
-[node name="FadeFromLeft" type="Button" parent="ControlContainer/TransitionControls" unique_id=1434089334]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade From Left"
-
-[node name="FadeFromRight" type="Button" parent="ControlContainer/TransitionControls" unique_id=700506167]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade From Right"
-
-[node name="FadeFromUp" type="Button" parent="ControlContainer/TransitionControls" unique_id=1190478310]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade From Up"
-
-[node name="FadeFromDown" type="Button" parent="ControlContainer/TransitionControls" unique_id=117352079]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade From Down"
-
-[node name="FadeToLeft" type="Button" parent="ControlContainer/TransitionControls" unique_id=181640008]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade To Left"
-
-[node name="FadeToRight" type="Button" parent="ControlContainer/TransitionControls" unique_id=972606103]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade To Right"
-
-[node name="FadeToUp" type="Button" parent="ControlContainer/TransitionControls" unique_id=2113881942]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade To Up"
-
-[node name="FadeToDown" type="Button" parent="ControlContainer/TransitionControls" unique_id=1151978201]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Fade To Down"
-
-[node name="AnimationControls" type="GridContainer" parent="ControlContainer" unique_id=1796824510]
+[node name="Reset" type="Button" parent="ControlContainer" unique_id=27744149]
+custom_minimum_size = Vector2(344, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.80598956
-anchor_top = 0.049382716
-anchor_right = 1.0273438
-anchor_bottom = 0.097222224
-offset_left = -24.5
-offset_right = -119.5
+anchor_left = 0.41041666
+anchor_top = 0.04444444
+anchor_right = 0.58958334
+anchor_bottom = 0.109491676
+offset_top = 19.000004
+offset_bottom = 18.99997
 grow_horizontal = 2
 grow_vertical = 2
-columns = 6
-
-[node name="Pulse" type="Button" parent="ControlContainer/AnimationControls" unique_id=48092293]
-layout_mode = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_default_cursor_shape = 2
-text = "Pulse"
-
-[node name="Ping" type="Button" parent="ControlContainer/AnimationControls" unique_id=1242993503]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Ping"
-
-[node name="Wiggle" type="Button" parent="ControlContainer/AnimationControls" unique_id=427044722]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Wiggle"
+theme_override_font_sizes/font_size = 32
+text = "RESET"
 
 [node name="Panel" type="Panel" parent="ControlContainer" unique_id=1234254711]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(448, 512)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -174.0
-offset_top = -174.0
-offset_right = 174.0
-offset_bottom = 174.0
+offset_left = -224.0
+offset_top = -152.0
+offset_right = 224.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="Label" type="Label" parent="ControlContainer/Panel" unique_id=1202269226]
+[node name="Label" type="Button" parent="ControlContainer/Panel" unique_id=261733997]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -103.0
-offset_top = 40.0
-offset_right = 103.0
-offset_bottom = 85.0
+offset_left = -160.0
+offset_top = 48.0
+offset_right = 160.0
+offset_bottom = 112.0
 grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Panel"
-horizontal_alignment = 1
 
+[node name="TransitionControls" type="GridContainer" parent="ControlContainer" unique_id=1666152512]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -635.0
+offset_top = 155.0
+offset_right = 636.0
+offset_bottom = 253.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 6
+
+[node name="FadeIn" type="Button" parent="ControlContainer/TransitionControls" unique_id=1876733153]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade In"
+
+[node name="FadeOut" type="Button" parent="ControlContainer/TransitionControls" unique_id=1950085475]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade Out"
+
+[node name="PopIn" type="Button" parent="ControlContainer/TransitionControls" unique_id=868605756]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Pop In"
+
+[node name="PopOut" type="Button" parent="ControlContainer/TransitionControls" unique_id=202201116]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Pop Out"
+
+[node name="FadeFromLeft" type="Button" parent="ControlContainer/TransitionControls" unique_id=1434089334]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Left"
+
+[node name="FadeFromRight" type="Button" parent="ControlContainer/TransitionControls" unique_id=700506167]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Right"
+
+[node name="FadeFromUp" type="Button" parent="ControlContainer/TransitionControls" unique_id=1190478310]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Up"
+
+[node name="FadeFromDown" type="Button" parent="ControlContainer/TransitionControls" unique_id=117352079]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade From Down"
+
+[node name="FadeToLeft" type="Button" parent="ControlContainer/TransitionControls" unique_id=181640008]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Left"
+
+[node name="FadeToRight" type="Button" parent="ControlContainer/TransitionControls" unique_id=972606103]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Right"
+
+[node name="FadeToUp" type="Button" parent="ControlContainer/TransitionControls" unique_id=2113881942]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Up"
+
+[node name="FadeToDown" type="Button" parent="ControlContainer/TransitionControls" unique_id=1151978201]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Fade To Down"
+
+[node name="AnimationControls" type="GridContainer" parent="ControlContainer" unique_id=1796824510]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -276.0
+offset_right = 296.0
+offset_bottom = -231.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 6
+
+[node name="Pulse" type="Button" parent="ControlContainer/AnimationControls" unique_id=48092293]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Pulse"
+
+[node name="Ping" type="Button" parent="ControlContainer/AnimationControls" unique_id=1242993503]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Ping"
+
+[node name="Wiggle" type="Button" parent="ControlContainer/AnimationControls" unique_id=427044722]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Wiggle"
+
+[connection signal="pressed" from="ControlContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="ControlContainer/TransitionControls/FadeIn" to="." method="_on_fade_in_pressed"]
 [connection signal="pressed" from="ControlContainer/TransitionControls/FadeOut" to="." method="_on_fade_out_pressed"]
 [connection signal="pressed" from="ControlContainer/TransitionControls/PopIn" to="." method="_on_pop_in_pressed"]

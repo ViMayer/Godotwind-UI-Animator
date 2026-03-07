@@ -1,5 +1,5 @@
 @tool
-@icon("./godotwind_icon.svg")
+@icon("./godotwind_icon.png")
 extends EditorPlugin
 
 const AUTOLOAD_NAME := "Animate"
