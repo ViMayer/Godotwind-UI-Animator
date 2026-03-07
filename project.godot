@@ -13,7 +13,7 @@ config_version=5
 config/name="Godotwind UI Animator"
 run/main_scene="uid://de4ovbjabh4tb"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://godotwind_logo.svg"
+config/icon="res://godotwind_logo.png"
 
 [autoload]
 
