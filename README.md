@@ -1,6 +1,16 @@
 # What is it?
  Godotwind is a Godot 4+ plugin designed to easily animate UI elements using customizable presets.
 
+<table>
+  <tbody>
+  <tr>
+    </td>
+     <td width="600" align="center" valign="top">
+      <img src="https://raw.githubusercontent.com/ViMayer/Godotwind-UI-Animator/refs/heads/main/addons/godotwind_ui_animator/examples/animations_example.gif">
+    </td>
+  </tbody>
+</table>
+
 # 📚 Installation
 ### Inside Godot (Recommended)
 1. In Godot, open the `AssetLib` tab at the top.
