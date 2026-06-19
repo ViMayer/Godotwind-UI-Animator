@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Godotwind UI Animator"
+config/name="GodotWind"
+config/version="1.1"
 run/main_scene="uid://de4ovbjabh4tb"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://godotwind_logo.png"
+config/icon="res://icon.svg"
 
 [autoload]
 

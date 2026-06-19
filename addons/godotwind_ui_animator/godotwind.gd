@@ -5,24 +5,19 @@ var default_distance: float = 100.0
 
 #region Transitions
 
-func fade_in(node: CanvasItem, duration := default_duration, from := 0.0, to := 1.0, transition := Tween.TRANS_CUBIC, easing := Tween.EASE_OUT) -> Signal:
-	await _check_active_animations(node)
+func fade_in(node: CanvasItem, duration := default_duration, from := 0.0, to := 1.0, transition := Tween.TRANS_CUBIC, easing := Tween.EASE_OUT) -> Signal: return _fade(node,duration,from,to,transition,easing)
+func fade_out(node: CanvasItem, duration := default_duration, from := 1.0, to := 0.0, transition := Tween.TRANS_CUBIC, easing := Tween.EASE_OUT) -> Signal: return _fade(node,duration,from,to,transition,easing)
+
+func _fade(node: CanvasItem, duration := default_duration, from := 0.0, to := 1.0, transition := Tween.TRANS_CUBIC, easing := Tween.EASE_OUT) -> Signal:
+	_check_active_animations(node)
 	if node: node.tree_exiting.connect(func(): _faded_nodes.erase(node))
 	_faded_nodes[node] = to
 	var tween := new_tween(node,transition,easing)
 	tween.tween_property(node, "modulate:a", to, duration).from(from)
 	return tween.finished
 
-func fade_out(node: CanvasItem, duration := default_duration, from := 1.0, to := 0.0, transition := Tween.TRANS_CUBIC, easing := Tween.EASE_IN) -> Signal:
-	await _check_active_animations(node)
-	_faded_nodes[node] = from
-	if node: node.tree_exiting.connect(func(): _faded_nodes.erase(node))
-	var tween := new_tween(node,transition,easing)
-	tween.tween_property(node, "modulate:a", to, duration).from(from)
-	return tween.finished
-
-func pop_in(node: CanvasItem, duration := default_duration, to := Vector2.ONE, from := Vector2.ZERO, transition := Tween.TRANS_BACK, easing := Tween.EASE_OUT) -> Signal:
-	await _check_active_animations(node)
+func _pop(node: CanvasItem, duration := default_duration, to := Vector2.ONE, from := Vector2.ZERO, transition := Tween.TRANS_BACK, easing := Tween.EASE_OUT) -> Signal:
+	_check_active_animations(node)
 	var duration_scale := duration/default_duration
 	fade_in(node,0.3 * duration_scale)
 	var prev_pivot_offset_ratio: Vector2 = node.get("pivot_offset_ratio")
@@ -32,8 +27,10 @@ func pop_in(node: CanvasItem, duration := default_duration, to := Vector2.ONE, f
 	tween.finished.connect(func(): if is_instance_valid(node): node.set("pivot_offset_ratio",prev_pivot_offset_ratio))
 	return tween.finished
 
+func pop_in(node: CanvasItem, duration := default_duration, to := Vector2.ONE, from := Vector2.ZERO, transition := Tween.TRANS_BACK, easing := Tween.EASE_OUT) -> Signal:
+	return _pop(node,duration, to, from, transition,easing)
 func pop_out(node: CanvasItem, duration := default_duration, to := Vector2.ZERO, transition := Tween.TRANS_BACK, easing := Tween.EASE_IN) -> Signal:
-	await _check_active_animations(node)
+	_check_active_animations(node)
 	var duration_scale := duration/default_duration
 	fade_out(node,0.25 * duration_scale)
 	var prev_pivot_offset_ratio: Vector2 = node.get("pivot_offset_ratio")
@@ -55,9 +52,9 @@ func fade_to_up(node: CanvasItem, duration := default_duration, distance := defa
 func fade_to_down(node: CanvasItem, duration := default_duration, distance := default_distance, fade_from := 1.0, fade_to := 0.0, transition := Tween.TRANS_BACK, easing := Tween.EASE_IN) -> Signal: return fade_slide(node, duration, distance * Vector2.DOWN, fade_from, fade_to, transition, easing)
 
 func fade_slide(node: Node, duration := default_duration, slide_distance := Vector2.ZERO, fade_from := 0.0, fade_to := 1.0, transition := Tween.TRANS_BACK, easing := Tween.EASE_OUT) -> Signal:
+	_check_active_animations(node)
+	_fade(node,duration,fade_from,fade_to,transition,easing)
 	var fading_in := fade_to >= fade_from
-	var fade_func: String = "fade_in" if fading_in else "fade_out"
-	call(fade_func,node,duration,fade_from,fade_to)
 	var start_pos: Vector2 = node.position
 	var final_pos: Vector2 = start_pos
 	var tween := new_tween(node,transition,easing)
@@ -76,9 +73,8 @@ var _active_animations: Dictionary[Node,Tween]
 var _faded_nodes: Dictionary[Node,float]
 
 func pulse(node: CanvasItem, amount := 2, duration: float = default_duration, opacity_off := 0.5, opacity_in := 1.0, transition := Tween.TRANS_BACK, easing := Tween.EASE_IN) -> Tween:
-	await _check_active_animations(node)
+	_check_active_animations(node)
 	if amount < 0: return null
-	var base_modulate := node.modulate.a
 	var tween := new_tween(node,Tween.TRANS_SINE)
 	var pulse_duration := duration/2
 	tween.set_loops(amount)
@@ -86,12 +82,10 @@ func pulse(node: CanvasItem, amount := 2, duration: float = default_duration, op
 	tween.tween_property(node, "modulate:a", opacity_off, pulse_duration)
 	tween.tween_callback(func(): _active_animations[node] = tween)
 	tween.tween_property(node, "modulate:a", opacity_in, pulse_duration)
-	tween.finished.connect(func(): node.modulate.a = base_modulate)
 	return tween
 
-func ping(node: CanvasItem, target_modulate: Color = Color(3.294, 0.0, 0.0, 1.0), duration := default_duration, scale_amount := Vector2(0.1,0.1), transition := Tween.TRANS_CIRC, easing := Tween.EASE_IN) -> Tween:
-	await _check_active_animations(node)
-
+func ping(node: CanvasItem, duration := default_duration, blink_color: Color = Color(3.294, 0.0, 0.0, 1.0), scale_amount := Vector2(0.1,0.1), transition := Tween.TRANS_CIRC, easing := Tween.EASE_IN) -> Tween:
+	_check_active_animations(node)
 	node.set("pivot_offset_ratio",Vector2.ONE * 0.5)
 	var start_scale: Vector2 = node.scale
 	var start_modulate := node.modulate
@@ -101,7 +95,7 @@ func ping(node: CanvasItem, target_modulate: Color = Color(3.294, 0.0, 0.0, 1.0)
 	var reset_duration := duration - ping_in_duration
 	_active_animations[node] = tween
 	tween.set_parallel(true)
-	tween.tween_property(node, "modulate", target_modulate, ping_in_duration/3.0)
+	tween.tween_property(node, "modulate", blink_color, ping_in_duration/3.0)
 	tween.tween_property(node, "scale", to, ping_in_duration)
 	tween.set_parallel(false)
 	tween.finished.connect(func(): node.scale = start_scale; node.modulate = start_modulate;  if tween: tween.stop())
@@ -110,12 +104,12 @@ func ping(node: CanvasItem, target_modulate: Color = Color(3.294, 0.0, 0.0, 1.0)
 	tween.tween_callback(func(): _active_animations[node] = tween)
 	return tween
 
-func wiggle(node: CanvasItem, degrees := 2.5, duration := 0.15, amount := 2, transition := Tween.TRANS_SINE, easing := Tween.EASE_IN) -> Tween:
-	await _check_active_animations(node)
+func wiggle(node: CanvasItem, duration := default_duration, degrees := 2.5, wiggle_amount := 4, transition := Tween.TRANS_SINE, easing := Tween.EASE_IN) -> Tween:
+	_check_active_animations(node)
 	var start_rotation_degrees: float = node.rotation_degrees
 	var prev_pivot_offset_ratio: Vector2 = node.get("pivot_offset_ratio")
 	node.set("pivot_offset_ratio",Vector2.ONE * 0.5)
-	var tween := new_tween(node,transition, easing).set_loops(amount)
+	var tween := new_tween(node,transition, easing).set_loops(wiggle_amount)
 	tween.set_parallel(false)
 	tween.tween_property(node, "rotation_degrees", degrees, duration/4.0)
 	tween.tween_property(node, "rotation_degrees", -degrees, duration/2.0)
@@ -128,19 +122,14 @@ func wiggle(node: CanvasItem, degrees := 2.5, duration := 0.15, amount := 2, tra
 #region Helper Functions
 
 func _check_active_animations(node: Node) -> void:
-	var should_await := false
-	if _faded_nodes.has(node):
-		node.modulate.a = _faded_nodes[node]
-		_faded_nodes.erase(node)
-		should_await = true
 	if _active_animations.has(node):
 		var active_tween := _active_animations[node]
 		active_tween.stop()
 		active_tween.finished.emit()
 		_active_animations.erase(node)
-		should_await = true
-	if should_await: await get_tree().process_frame
-		
+	if _faded_nodes.has(node):
+		node.modulate.a = _faded_nodes[node]
+		_faded_nodes.erase(node)
 	return
 
 func new_tween(parent_node: Node = self, transition := Tween.TRANS_LINEAR, easing := Tween.EASE_IN) -> Tween:
@@ -148,7 +137,5 @@ func new_tween(parent_node: Node = self, transition := Tween.TRANS_LINEAR, easin
 	_active_animations[parent_node] = tween
 	tween.finished.connect(func(): if _active_animations.get(parent_node) and _active_animations.get(parent_node) == tween: _active_animations.erase(parent_node))
 	return tween
-
-
 
 #endregion

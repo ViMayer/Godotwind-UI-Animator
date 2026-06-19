@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://de4ovbjabh4tb"]
 
-[ext_resource type="Script" uid="uid://bhk3ybvie74av" path="res://src/examples/example_scene.gd" id="1_qleqb"]
-[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://src/assets/example_theme/example_theme(kenneyUI-blue).tres" id="2_mjtio"]
+[ext_resource type="Script" uid="uid://chf1aaf7buarl" path="res://addons/godotwind_ui_animator/examples/example_scene.gd" id="1_5nkl1"]
+[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://addons/godotwind_ui_animator/examples/theme/theme(kenneyUI-blue).tres" id="2_78p6l"]
 
 [sub_resource type="Environment" id="Environment_t8pvf"]
 background_mode = 3
@@ -16,7 +16,7 @@ adjustment_enabled = true
 adjustment_saturation = 1.1
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1973232321]
-script = ExtResource("1_qleqb")
+script = ExtResource("1_5nkl1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1069053153]
 environment = SubResource("Environment_t8pvf")
@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_mjtio")
+theme = ExtResource("2_78p6l")
 
 [node name="Background2" type="ColorRect" parent="ControlContainer" unique_id=1487740485]
 layout_mode = 1

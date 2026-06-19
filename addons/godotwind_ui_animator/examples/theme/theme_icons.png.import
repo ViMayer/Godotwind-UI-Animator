@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi4xer8hj11n5"
-path="res://.godot/imported/godotwind_logo.png-90d8483621b85ce04802558e9a19a8ea.ctex"
+uid="uid://dxdagnoa4seta"
+path="res://.godot/imported/theme_icons.png-0451ba3f630d8e2d89d08382afec281e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://godotwind_logo.png"
-dest_files=["res://.godot/imported/godotwind_logo.png-90d8483621b85ce04802558e9a19a8ea.ctex"]
+source_file="res://addons/godotwind_ui_animator/examples/theme/theme_icons.png"
+dest_files=["res://.godot/imported/theme_icons.png-0451ba3f630d8e2d89d08382afec281e.ctex"]
 
 [params]
 
